@@ -112,7 +112,7 @@ def preprocess(input_path="data/raw/listings.csv",
     print(f"Final shape: {df.shape}")
     print(f"\nColumns: {df.columns.tolist()}")
     return df
-
+    
 
 if __name__ == "__main__":
     preprocess()
