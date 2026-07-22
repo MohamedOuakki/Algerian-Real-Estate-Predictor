@@ -47,8 +47,10 @@ def extract_rooms(title):
 
 
 def clean_price(df):
-    # remove extreme outliers — keep prices between 10k and 500M DA
-    df = df[(df["product_price"] >= 10_000) & (df["product_price"] <= 500_000_000)]
+    df = df[
+        (df["product_price"] >= 100_000) &
+        (df["product_price"] <= 50_000_000)
+    ]
     return df
 
 
@@ -103,7 +105,8 @@ def preprocess(input_path="data/raw/listings.csv",
     df = pd.get_dummies(df, columns=["listing_type", "property_type", "store_adress"])
 
     # drop rows where num_rooms is null — we'll keep it as a feature with fill
-    df["num_rooms"] = df["num_rooms"].fillna(0).astype(int)
+    df["has_rooms_info"] = df["num_rooms"].notna().astype(int)
+    df["num_rooms"]      = df["num_rooms"].fillna(0).astype(int)
 
     os.makedirs("data/processed", exist_ok=True)
     df.to_csv(output_path, index=False)
@@ -112,7 +115,7 @@ def preprocess(input_path="data/raw/listings.csv",
     print(f"Final shape: {df.shape}")
     print(f"\nColumns: {df.columns.tolist()}")
     return df
-    
+
 
 if __name__ == "__main__":
     preprocess()
