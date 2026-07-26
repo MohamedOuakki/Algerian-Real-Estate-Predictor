@@ -71,6 +71,27 @@ def train():
         pickle.dump(X.columns.tolist(), f)
 
     print("Model saved to models/best_model.pkl")
+
+    # SHAP explainability
+    import shap
+    print("\nGenerating SHAP values...")
+    explainer   = shap.TreeExplainer(best_model)
+    sample      = X_test.iloc[:200]
+    shap_values = explainer.shap_values(sample)
+
+    with open("models/shap_explainer.pkl", "wb") as f:
+        pickle.dump(explainer, f)
+    with open("models/shap_sample.pkl", "wb") as f:
+        pickle.dump(sample, f)
+
+    import matplotlib.pyplot as plt
+    shap.summary_plot(shap_values, sample, show=False)
+    os.makedirs("reports", exist_ok=True)
+    plt.savefig("reports/shap_summary.png", bbox_inches="tight", dpi=150)
+    plt.close()
+    print("SHAP summary plot saved to reports/shap_summary.png")
+    
+
     return best_model, X.columns.tolist()
 
 
