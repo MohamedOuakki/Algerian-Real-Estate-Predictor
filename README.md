@@ -68,7 +68,7 @@ Listing type (sale vs. rental) and location in Algiers emerged as the dominant p
 
 ```bash
 git clone https://github.com/MohamedOuakki/Algerian-Real-Estate-Predictor.git
-cd Algerian-real-estate-predictor
+cd Algerian-Real-Estate-Predictor
 pip install -r requirements.txt
 streamlit run app.py
 ```
@@ -77,4 +77,4 @@ streamlit run app.py
 
 **Ouakki Mohamed Shamseddine** — 4th-year AI/Data Science student at ESI Algiers (École nationale Supérieure d'Informatique)
 
-[LinkedIn](https://www.linkedin.com/in/ouakki-mohamed-chames-eddine-50774b2b4/) · [GitHub](https://github.com/MohamedOuakki)
+[LinkedIn](https://www.linkedin.com/in/ouakki-mohamed-chames-eddine-50774b2b4/)
