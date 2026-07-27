@@ -3,7 +3,7 @@
 A machine learning system that predicts real estate prices in Algeria, built end-to-end from raw data collection to a deployed, explainable web app.
 
 ## Live Demo
-[Try the app here](#)
+[Try the app here](https://algerian-real-estate-predictor.streamlit.app)
 
 ## Overview
 
