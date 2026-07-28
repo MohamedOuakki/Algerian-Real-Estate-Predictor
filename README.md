@@ -58,6 +58,12 @@ Listing type (sale vs. rental) and location in Algiers emerged as the dominant p
 - Used SHAP to move beyond "black box" predictions — both globally (which features matter most) and locally (why this specific prediction).
 - Identified that the model's performance ceiling was due to missing structural features in the data, not model choice — a key insight for future iterations.
 
+## The Scraping Journey
+
+My original plan was to scrape live listings from Ouedkniss using BeautifulSoup. That returned 0 results — the site loads listings dynamically via JavaScript, so the raw HTML is empty on first fetch. I rebuilt the scraper with Selenium to render the page fully before extracting data, which is the standard fix for this kind of problem. That still returned 0 listings, even after removing headless mode and finding the correct CSS selectors — the site's anti-bot protections were blocking automated access at a deeper level (likely lazy-loading behind additional triggers or token-gated API calls).
+
+Rather than sink more time into reverse-engineering Ouedkniss's protections, I made the call to switch to a public Kaggle dataset scraped from the same site and focus my time on the modeling and explainability work — the part of the project that actually mattered for the skills I was trying to build. The scraper code is still in this repo (`src/scraper.py`) as a working example of Selenium-based scraping, even though it wasn't the final data source used.
+
 ## Future Improvements
 
 - Add surface area (m²) and floor number as features — likely the highest-value additions
